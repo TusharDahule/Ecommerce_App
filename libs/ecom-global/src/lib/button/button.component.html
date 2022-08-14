@@ -1,0 +1,56 @@
+<ng-container [ngSwitch]="type">
+  <ng-container *ngSwitchCase="ButtonType.LINK">
+    <ng-template *ngTemplateOutlet="standardLinkTpl">
+    </ng-template>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="ButtonType.ROUTER_LINK">
+    <ng-template *ngTemplateOutlet="routerLinkTpl">
+    </ng-template>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="ButtonType.BUTTON">
+    <ng-template *ngTemplateOutlet="standardButtonTpl">
+    </ng-template>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="ButtonType.SUBMIT">
+    <ng-template *ngTemplateOutlet="submitButtonTpl">
+    </ng-template>
+  </ng-container>
+
+
+</ng-container>
+
+<!-- shaed content tpl -->
+<ng-template #contentTpl>
+  <i *ngIf = "iconClasses" class="icon" [ngClass]="iconClasses"></i>
+  <ng-content></ng-content>
+</ng-template>
+
+
+<!-- button type templates -->
+<ng-template #standardLinkTpl>
+  <a href="{{ href }}" class="{{ cssClasses }}" target="{{ target }}">
+    <ng-template *ngTemplateOutlet="contentTpl"></ng-template>
+  </a>
+</ng-template>
+
+<ng-template #routerLinkTpl>
+  <a role="button" [routerLink]="routerLink" class="{{ cssClasses }}">
+    <ng-template *ngTemplateOutlet="contentTpl"></ng-template>
+  </a>
+</ng-template>
+
+<ng-template #submitButtonTpl>
+  <button type="submit" [disabled] = "disabled" class="{{ cssClasses }}">
+    <ng-template *ngTemplateOutlet="contentTpl"></ng-template>
+  </button>
+</ng-template>
+
+<ng-template #standardButtonTpl>
+  <button type="button" [disabled] = "disabled" class="{{ cssClasses }}" (click)="onButtonClick($event)">
+    <ng-template *ngTemplateOutlet="contentTpl"></ng-template>
+  </button>
+</ng-template>
+

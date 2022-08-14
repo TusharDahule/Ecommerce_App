@@ -1,0 +1,172 @@
+@import "./modules/color";
+@import "./mixins/mixins.scss";
+@import "./mixins/breakpoint.scss";
+@import "./spacing.scss";
+
+body,
+html {
+  margin: var(--body-margin);
+  padding: var(--body-padding);
+  height: var(--body-height);
+  font-family: var(--body-font-family) + "!important";
+  font-size: var(--body-font-size);
+  font-weight: var(--body-font-weight);
+  line-height: var(--body-line-height);
+  color: var(--body-color);
+  strong {
+    font-family: var(--body-strong-font-family) + "!important";
+    font-weight: var(--body-strong-font-weight);
+  }
+  p {
+    font-stretch: var(--paragraph-font-stretch);
+    font-style: var(--paragraph-font-style);
+    letter-spacing: var(--paragraph-letter-spacing);
+    margin: var(--paragraph-margin);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body .no-scroll {
+  overflow: hidden;
+
+  &.no-scroll-ios {
+    position: fixed;
+    width: 100%;
+  }
+}
+
+// Headers
+h1 {
+  @include generateHeaders(
+    var(--text-h1-font-family),
+    var(--text-h1-font-size),
+    var(--text-h1-font-weight),
+    var(--text-h1-line-height),
+    var(--text-h1-letter-spacing)
+  );
+
+  // Desktops onwards..
+  @include vm-breakpoint("md") {
+    @include generateHeaders(
+      var(--text-h1-font-family-md),
+      var(--text-h1-font-size-md),
+      var(--text-h1-font-weight-md),
+      var(--text-h1-line-height-md),
+      var(--text-h1-letter-spacing-md)
+    );
+  }
+}
+
+h2 {
+  @include generateHeaders(
+    var(--text-h2-font-family),
+    var(--text-h2-font-family),
+    var(--text-h2-font-weight),
+    var(--text-h2-line-height),
+    var(--text-h2-letter-spacing)
+  );
+
+  // Desktops onwards..
+  @include vm-breakpoint("md") {
+    @include generateHeaders(
+      var(--text-h2-font-family-md),
+      var(--text-h2-font-family-md),
+      var(--text-h2-font-weight-md),
+      var(--text-h2-line-height-md),
+      var(--text-h2-letter-spacing-md)
+    );
+  }
+}
+
+h3 {
+  @include generateHeaders(
+    var(--text-h3-font-family),
+    var(--text-h3-font-family),
+    var(--text-h3-font-weight),
+    var(--text-h3-line-height),
+    var(--text-h3-letter-spacing)
+  );
+
+  // Desktops onwards..
+  @include vm-breakpoint("md") {
+    @include generateHeaders(
+      var(--text-h3-font-family-md),
+      var(--text-h3-font-family-md),
+      var(--text-h3-font-weight-md),
+      var(--text-h3-line-height-md),
+      var(--text-h3-letter-spacing-md)
+    );
+  }
+}
+
+h4 {
+  @include generateHeaders(
+    var(--text-h4-font-family),
+    var(--text-h4-font-family),
+    var(--text-h4-font-weight),
+    var(--text-h4-line-height),
+    var(--text-h4-letter-spacing)
+  );
+}
+
+h5 {
+  @include generateHeaders(
+    var(--text-h5-font-family),
+    var(--text-h5-font-family),
+    var(--text-h5-font-weight),
+    var(--text-h5-line-height),
+    var(--text-h5-letter-spacing)
+  );
+}
+
+// svg icons
+a,
+button {
+  svg {
+    padding-bottom: 0.1875rem;
+  }
+}
+
+// Lists
+
+ul {
+  list-style-image: url("../assets/Bullet.svg");
+}
+
+ol,
+ul {
+  @include generatelist(
+    (
+      position: var(--list-position),
+      width: var(--list-width),
+      font-family: var(--list-font-famil),
+      font-size: var(--list-font-size),
+      font-weight: var(--list-font-weight),
+      font-stretch: var(--list-font-stretch),
+      font-style: var(--list-font-style),
+      line-height: var(--list-line-height),
+      letter-spacing: var(--list-letter-spacing),
+      color: var(--list-color),
+      padding: var(--list-padding),
+      list-style-position: var(--list-style-position),
+    )
+  );
+  li {
+    padding-left: var(--list-item-padding-left);
+    span {
+      /*
+}
+we do this so that lists are consistent across safari/chrome.
+requirements stipulate a 12px gap either side of the list item.
+chrome has some pseudo elements (::marker) that affect this consistency,
+so removing padding completely and absolutely positioning spans within
+list items achieves the intended result.
+*/
+      position: var(--list-item-span-position);
+      left: var(--list-item-span-left);
+    }
+  }
+}

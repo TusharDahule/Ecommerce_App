@@ -1,0 +1,60 @@
+@import './variables';
+@import './spacing';
+/* stylelint-disable */
+.form_label {
+width: 100%;
+height: 1.25rem;
+color: $text-color;
+display: block;
+}
+input,
+textarea {
+width: 100%;
+height: $spacing-xl;
+border-radius: 0.1875rem;
+border: solid 0.0625rem $border-grey-20;
+background-color: $background-grey-05;
+padding-left: $spacing-s;
+padding-right: $spacing-s;
+outline: none;
+display: block;
+font-family: var(--text-input-font-family);
+color: $border-grey-80;
+box-sizing: border-box;
+}
+
+.form_error {
+border-color: var(--color-form-error-border-color);
+color: var(--color-form-error-color);
+background-color: $background-white;
+}
+
+input:focus {
+background-color: $background-white;
+border: 0.125rem solid $information;
+color: $border-grey-80;
+}
+
+input:hover,
+textarea:hover {
+border: 0.125rem solid $border-grey-40;
+}
+
+.form_multiline--input {
+min-height: 9rem;
+}
+
+.form_error--icon {
+font-size: large;
+color: $danger;
+float: left;
+margin-top: -0.125rem;
+margin-right: $spacing-xxs;
+}
+
+/* stylelint-enable */
+input::placeholder,
+textarea::placeholder {
+color: $border-grey-40;
+font-family: var(--text-input-font-family);
+}

@@ -1,0 +1,271 @@
+@import 'corners';
+@import 'modules/color';
+@import 'mixins/mixins';
+// buttons
+$btn-font-size-lg: calculate-rem(16px);
+// $border-radius will be moved when theming is merged
+$border-radius: calculate-rem(100px);
+//fallback fonts
+$fallback-fonts: 'Arial', 'Helvetica', 'sans-serif';
+//font families in variables with fallback fonts
+$VMCircularShoutPTT: VMCircularShoutPTT, $fallback-fonts;
+$VMCircularChatPTT: VMCircularChatPTT, $fallback-fonts;
+$VMCircularNatterPTT: VMCircularNatterPTT, $fallback-fonts;
+$VMCircularWhisperPTT: VMCircularWhisperPTT, $fallback-fonts;
+$VMCircularWhisperPTT-Italic: VMCircularWhisperPTT-Italic, $fallback-font;
+$VMCircularYellPTT: VMCircularYellPTT, $fallback-fonts;
+//vmo2 font families in variables with fallback fonts
+$VMAeonikProBlack: VMAeonikProBlack, $fallback-fonts;
+$VMAeonikProLight: VMAeonikProLight, $fallback-fonts;
+$VMAeonikProBold: VMAeonikProBold, $fallback-fonts;
+$VMRobotoLight: VMRobotoLight, $fallback-fonts;
+$VMRobotoRegular: VMRobotoRegular, $fallback-fonts;
+$VMRobotoMedium: VMRobotoMedium, $fallback-fonts;
+$VMAeonikProRegular: VMAeonikProRegular, $fallback-fonts;
+$VMAeonikProMedium: VMAeonikProMedium, $fallback-fonts;
+$VMCircularYellPTT: VMCircularYellPTT, $fallback-fonts;
+$text-pop-font-size: calculate-rem(30px);
+$text-pop-secondary-font-size: calculate-rem (30px);
+$text-h1-font-size: calculate-rem(30px);
+$text-h1-font-size-md: calculate-rem(36px);
+$text-h2-font-size: calculate-rem(24px);
+$text-h2-font-size-md: calculate-rem(28px);
+$text-h2-secondary-font-size: calculate-rem(24px);
+$text-h2-secondary-font-size-md: calculate-rem(28px);
+$text-h2-tertiary-font-size: calculate-rem(24px);
+$text-h2-tertiary-font-size-md: calculate-rem (28px);
+$text-h3-font-size: calculate-rem(21px);
+$text-h3-font-size-md: calculate-rem (24px);
+$text-h3-secondary-font-size: calculate-rem(21px);
+$text-h3-secondary-font-size-md: calculate-rem(24px);
+$text-h3-tertiary-font-size: calculate-rem(18px);
+$text-h3-quaternary-font-size-md: calculate-rem(24px);
+$text-h4-font-size: calculate-rem(18px);
+$text-h4-secondary-font-size: calculate-rem(18px);
+$text-h4-tertiary-font-size: calculate-rem (18px);
+$text-h5-font-size: calculate-rem(16px);
+$body-font-size: calculate-rem(16px);
+$body-secondary-font-size: calculate-rem(16px);
+$body-tertiary-font-size: calculate-rem(16px);
+$body-quaternary-font-size: calculate-rem(14px);
+$list-font-size: calculate-rem(16px);
+$list-item-padding-left: calculate-rem(12px);
+$list-item-span-left: calculate-rem(48px);
+$text-hero-title-font-size: calculate-rem (26px);
+$text-hero-title-font-size-md: calculate-rem(58px);
+$text-hero-font-size: calculate-rem(18px);
+$text-hero-font-size-md: calculate-rem (20px);
+$text-accordion-title-bar-font-size: calculate-rem(16px);
+$text-h4-banner-description-font-size: calculate-rem(18px);
+/**
+* static root initialization of default CSS variables
+* only to be consumed by storybook, and not by micro-apps.
+* All micro-apps should initialize CSS variables via typescript destructuring
+* of default-theme-variables.ts in their respective app-component.ts on onRouteChange
+* using the theme service.
+*/
+:root {
+--primary-color: #edeeee; // vm-red
+--secondary-color:
+#322332; // plum
+--tertiary-color: #5f2878; // purple
+--primary-shadow: #bbeaee; // shadow red
+--secondary-shadow:
+#160f16; // shadow plum
+--tertiary-shadow: #3b164c; // shadow purple
+
+--action-primary: #ede000;
+--action-primary-shadow: #bb0a00;
+--action-secondary: #322332;
+--action-secondary-shadow:
+#160f16;
+--action-tertiary: #5f2878;
+--action-tertiary-shadow:#3b164c;
+--action-disabled:#dbdbdb;
+--action-disabled-shadow:#9a9a9a;
+--option-border: #{$border-grey-20};
+--option-border-highlight: #{$vmo2-blue};
+--option-background: #{$vmo2-silver};
+--footer-background-color: #{$background-color-plum};
+--footer-link-color: #{$white};
+--product-card-border-gradient-color-a: #{$vm-red};
+--product-card-border-gradient-color-b: #{$vmo2-blue};
+--product-card-border-gradient-color-c: #{$vmo2-blue-light};
+--product-card-flare-text-color: #{$text-color-white};
+--product-card-border-black-friday-color: #{$border-grey-80};
+--body-color: #{$grey-80};
+--body-secondary-color: #{$grey-8};
+--list-color: #{$grey-80};
+--text-link-color: #{$purple};
+--text-link-hover-color: #{$grey-80};
+--color-banner-background-color: #{$white};
+--color-banner-border-color: #{$purple};
+--color-banner-floating-background-color: #{$purple};
+--color-banner-floating-color: #{$white};
+--color-banner-description-font-color: #{$plum};
+--footer-background-color: #{$plum};
+--color-form-error-border-color: #{$shadow-red};
+--color-form-error-color: #{$shadow-red};
+--color-message-background-color: #{$dark-blue};
+--color-message-border-color: #{$dark-blue};
+--color-calendar-border-color: #{$purple};
+--color-toggle-background-color: #{$purple};
+--color-toggle-border-color: #{$purple};
+--color-toggle-hover-background-color: #{$shadow-purple};
+--color-toggle-hover-border-color: #{$shadow-purple};
+--product-card-timer-color: #{$shadow-red};
+--action-button-border-radius: #{$border-radius};
+--text-h1-font-family: #{$VMCircularWhisperPTT};
+--text-h1-font-weight: 300;
+--text-h1-font-size: #{$text-h1-font-size};
+--text-h1-line-height: 1.28;
+--text-h1-letter-spacing: normal;
+--text-h1-font-family-md: #{$VMCircularWhisperPTT};
+--text-h1-font-weight-md: 300;
+--text-h1-font-size-md: #{$text-h1-font-size-md};
+--text-h1-line-height-md: 1.27;
+--text-h1-letter-spacing-md: normal;
+--text-h1-secondary-line-height: 1.28;
+
+--text-h2-font-family: #{$VMCircularWhisperPTT};
+--text-h2-font-weight: 300;
+--text-h2-font-size: #{$text-h2-font-size};
+--text-h2-line-height: 1.25;
+--text-h2-letter-spacing: normal;
+--text-h2-font-family-md: #{$VMCircularWhisperPTT};
+--text-h2-font-weight-md: 300;
+--text-h2-font-size-md: #{$text-h2-font-size-md};
+--text-h2-line-height-md: 1.29;
+--text-h2-letter-spacing-md: normal;
+--text-h2-secondary-font-family: #{$VMCircularWhisperPTT};
+--text-h2-secondary-font-size: #{$text-h2-secondary-font-size};
+--text-h2-secondary-font-size-md: #{$text-h2-secondary-font-size-md};
+--text-h2-secondary-line-height: 1.25;
+--text-h2-tertiary-font-family: #{$VMCircularWhisperPTT};
+--text-h2-tertiary-font-size: #{$text-h2-tertiary-font-size};
+--text-h2-tertiary-font-size-md: #{$text-h2-tertiary-font-size-md};
+--text-h2-quaternary-font-family: #{$VMCircularChatPTT};
+--text-h3-font-family: #{$VMCircular ChatPTT};
+--text-h3-font-weight: 300;
+--text-h3-font-size: #{$text-h3-font-size};
+--text-h3-line-height: 1.29;
+--text-h3-letter-spacing: normal;
+--text-h3-font-family-md: #{$VMCircularChatPTT};
+--text-h3-font-weight-md: 300;
+--text-h3-font-size-md: #{$text-h3-font-size-md};
+--text-h3-line-height-md: 1.25;
+--text-h3-letter-spacing-md: normal;
+--text-h3-secondary-font-family: #{$VMCircularChatPTT};
+--text-h3-secondary-font-size: #{$text-h3-secondary-font-size};
+--text-h3-secondary-font-size-md: #{$text-h3-secondary-font-size-md};
+--text-h3-tertiary-font-family: #{$VMCircularChatPTT};
+--text-h3-tertiary-font-size: #{$text-h3-tertiary-font-size};
+--text-h3-quaternary-font-size-md: #{$text-h3-quaternary-font-size-md};
+--text-h4-font-family: #{$VMCircularChatPTT};
+--text-h4-font-weight: 300;
+--text-h4-font-size: #{$text-h4-font-size};
+--text-h4-line-height: 1.28;
+
+
+
+--text-h4-letter-spacing: normal;
+--text-h4-secondary-font-family: #{$VMCircularChatPTT};
+--text-h4-secondary-font-size: #{$text-h4-secondary-font-size};
+--text-h4-tertiary-font-family: #{$VMCircularChatPTT};
+--text-h4-tertiary-font-size: #{$text-h4-tertiary-font-size};
+--text-h4-quaternary-font-family: #{$VMCircularChatPTT};
+--text-h4-quinary-font-family: #{$VMCircularChatPTT};
+--text-h5-font-family: #{$VMCircularChatPTT};
+--text-h5-font-weight: 300;
+--text-h5-font-size: #{$text-h5-font-size};
+--text-h5-line-height: 1.25;
+--text-h5-letter-spacing: normal;
+--text-h5-secondary-font-family: #{$VMCircularChatPTT};
+--text-h5-tertiary-font-family: #{$VMCircularChatPTT};
+--text-h5-quaternary-font-family: #{$VMCircularChatPTT};
+--body-margin: 0;
+--body-padding: 0;
+--body-height: 100%;
+--body-font-family: #{$VMCircularWhisperPTT};
+--body-font-size: #{$body-font-size};
+--body-font-weight: 300;
+--body-line-height: 1.5;
+--body-secondary-font-family: #{$VMCircularChatPTT};
+--body-secondary-font-size: #{$body-secondary-font-size};
+--body-tertiary-font-family: #{$VMCircularWhisperPTT};
+--body-tertiary-font-size: #{$body-tertiary-font-size};
+--body-tertiary-font-weight: bold;
+--body-quaternary-font-family: #{$VMCircularWhisperPTT};
+--body-quaternary-font-size: #{$body-quaternary-font-size};
+--body-quinary-font-family: #{$VMCircularWhisperPTT};
+--body-strong-font-family: #{$VMCircularChatPTT};
+--body-strong-font-weight: bold;
+--body-strong-secondary-font-family: #{$VMCircularChatPTT};
+--paragraph-font-stretch: normal;
+--paragraph-font-style: normal;
+--paragraph-letter-spacing: normal;
+--paragraph-margin: 0;
+
+
+--paragraph-font-family: #{$VMCircularWhisperPTT};
+--list-position: relative;
+--list-width: 100%;
+--list-font-family: #{$VMCircularWhisperPTT};
+--list-font-size: #{$list-font-size};
+--list-font-weight: 300;
+--list-font-stretch: normal;
+--list-font-style: normal;
+--list-line-height: 1.5;
+--list-letter-spacing: normal;
+--list-padding: 0;
+--list-style-position: inside;
+--list-item-padding-left: #{$list-item-padding-left};
+--list-item-span-position: absolute;
+--list-item-span-left: #{$list-item-span-left};
+--list-secondary-font-family: #{$VMCircularChatPTT};
+--text-pop-font-family: #{$VMCircular ChatPTT};
+--text-pop-font-size: #{$text-pop-font-size};
+--text-pop-line-height: 1.27;
+--text-pop-secondary-font-size: #{$text-pop-secondary-font-size};
+--text-hero-title-font-family: #{$VMCircularYellPTT};
+--text-hero-title-font-size: #{$text-hero-title-font-size};
+--text-hero-title-line-height: 1.38;
+--text-hero-title-font-size-md: #{$text-hero-title-font-size-md};
+--text-hero-title-line-height-md: 1.24;
+--text-hero-line-height: 1.67;
+--text-hero-font-size: #{$text-hero-font-size};
+--text-hero-line-height-md: 1.5;
+--text-hero-font-size-md: #{$text-hero-font-size-md};
+--text-light-font-weight: 300;
+--text-light-font-family: #{$VMCircularWhisperPTT};
+--text-light-secondary-font-family: #{$VMCircularWhisperPTT};
+--text-book-font-weight: 400;
+--text-book-font-family: #{$VMCircularChatPTT};
+--text-book-secondary-font-family: #{$VMCircularChatPTT};
+--text-book-secondary-font-weight: 500;
+--text-book-tertiary-font-family: #{$VMCircularChatPTT};
+--text-medium-font-weight: 600;
+
+--text-medium-font-family: #{$VMCircularNatterPTT};
+--text-bold-font-weight: 700;
+--text-bold-font-family: #{$VMCircularShoutPTT};
+--text-bold-font-secondary-family: #{$VMCircularShoutPTT};
+--text-bold-secondary-font-weight: 900;
+--text-bold-tertiary-font-family: #{$VMCircularShoutPTT};
+--text-bold-quaternary-font-family: #{$VMCircularShoutPTT};
+--text-bold-secondary-font-weight: 900;
+--text-bold-tertiary-font-family: #{$VMCircularShoutPTT};
+--text-bold-quaternary-font-family: #{$VMCircularShoutPTT};
+--text-black-font-weight: 900;
+--text-black-font-family: #{$VMCircularYellPTT};
+--text-link-font-weight: normal;
+--text-link-font-family: #{$VMCircularChatPTT};
+--text-input-font-family: #{$VMCircularChatPTT};
+--text-input-secondary-font-family: #{$VMCircularWhisperPTT};
+--text-accordion-title-bar-font-family: #{$VMCircularChatPTT};
+--text-accordion-title-bar-font-size: #{$text-accordion-title-bar-font-size};
+--text-banner-font-family: #{$VMCircularNatterPTT};
+--text-banner-title-font-family: #{$VMCircularNatterPTT};
+--text-h4-banner-title-font-family: #{$VMCircularChatPTT};
+--text-h4-banner-description-font-family: #{$VMCircular thatPTT};
+--text-h4-banner-description-font-size: #{$text-h4-banner-description-font-size};

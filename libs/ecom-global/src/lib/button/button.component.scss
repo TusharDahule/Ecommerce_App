@@ -1,0 +1,28 @@
+@import 'base';
+@import 'typography';
+
+$buttonLevels: (
+  primary: (
+    normal: var(--action-primary),
+    lowLight: var(--action-primary-shadow),
+  ),
+  secondary: (
+    normal: var(--action-secondary),
+    lowLight: var(--action-secondary-shadow),
+  )
+);
+
+$buttonSize: (
+  medium: (
+    height: $spacing-xl,
+    lineHeight: 44px,
+  ),
+  large: (
+    height: $spacing-xxl,
+    lineHeight: 60px,
+  )
+);
+
+
+
+

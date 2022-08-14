@@ -1,0 +1,146 @@
+@use "sass:map";
+@use "sass:math";
+@import "./breakpoint.scss";
+
+@mixin generateHeaders(
+  $family,
+  $size,
+  $weight,
+  $height,
+  $letter-spacing: normal
+) {
+  font-family: $family, Arial, Helvetica, sans-serif;
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $height;
+  letter-spacing: $letter-spacing;
+}
+
+@mixin input-rounded {
+  border-radius: $input-radius;
+}
+
+@mixin background-rounded {
+  border-radius: $background-radius;
+}
+
+@mixin calc($property, $expression) {
+  #{$property}: calc(#{$expression});
+}
+
+@mixin font-size($size) {
+  font: {
+    size: $size;
+    size: caculate-rem($size);
+  }
+}
+
+/* Add property horizontal
+@param {string} $start
+@param {string} $end */
+@mixin property-horizontal($prop, $start, $end: $start) {
+  #{$prop}-left: #{$start};
+  #{$prop}-right: #{$end};
+
+  @if $start != 0 and $end != 0 {
+    @at-root {
+      @supports ((margin-inline-start: 0) or (-webkit-margin-start: 0)) {
+        & {
+          @if $start != null {
+            #{$prop}-left: unset;
+          }
+
+          @if $end != null {
+            #{$prop}-right: unset;
+          }
+
+          -webkit-#{$prop}-start: #{$start};
+          #{$prop}-inline-start: #{$start};
+          -webkit-#{$prop}-end: #{$end};
+          #{$prop}-inline-end: #{$end};
+        }
+      }
+    }
+  }
+}
+
+@mixin property($prop, $top, $end: $top, $bottom: $top, $start: $end) {
+  @include property-horizontal($prop, $start, $end);
+  #{$prop}-top: #{$top};
+  #{$prop}-bottom: #{$bottom};
+}
+
+@mixin padding-horizontal($start, $end: $start) {
+  @include property-horizontal(padding, $start, $end);
+}
+
+@mixin margin-horizontal($start, $end: $start) {
+  @include property-horizontal(margin, $start, $end);
+}
+
+@mixin margin($top, $end: $top, $bottom: $top, $start: $end) {
+  @include property(margin, $top, $end, $bottom, $start);
+}
+
+// Adds shadows to the edges of scrolled boxes
+// so as to show there's more content to scroll
+@mixin scroll-edge-shadows() {
+  background: linear-gradient($background-white 30% rgba(255, 255, 255, 0)),
+    linear-gradient(rgba(255, 255, 255, 0), $background-white 70%) 0 100%,
+    radial-gradient(
+      farthest-side at 50% 0,
+      rgba(0, 0, 0, 0.1),
+      rgba(0, 0, 0, 0)
+    ),
+    radial-gradient(
+        farthest-side at 50% 100%,
+        rgba(0, 0, 0, 0.1),
+        rgba(0, 0, 0, 0)
+      )
+      0 100%;
+
+  background-repeat: no-repeat;
+  background-color: $background-white;
+  background-size: 100% $spacing-xl, 100% $spacing-xl, 100% $spacing-s,
+    100% $spacing-s;
+
+  background-attachment: local, local, scroll, scroll;
+}
+
+@mixin generateHtml($options) {
+  margin: map-get($options, margin);
+  padding: map-get($options, padding);
+  height: map-get($options, height);
+  font-family: map-get($options, font-family);
+  font-size: map-get($options, font-size);
+  font-weight: map-get($options, font-weight);
+  line-height: map-get($options, line-height);
+  color: map-get($options, text-color);
+}
+
+@mixin generateParagraph($options) {
+  margin: map-get($options, margin);
+  letter-spacing: map-get($options, letter-spacing);
+  font-style: map-get($options, font-style);
+  font-stretch: map-get($options, font-stretch);
+}
+
+@mixin generateList($options) {
+  position: map-get($options, position);
+  width: map-get($options, width);
+  padding: map-get($options, padding);
+  font-family: map-get($options, font-family);
+  font-size: map-get($options, font-size);
+  font-weight: map-get($options, font-weight);
+  line-height: map-get($options, line-height);
+  font-style: map-get($options, font-style);
+  font-stretch: map-get($options, font-stretch);
+  color: map-get($options, text-color);
+  list-style-position: map-get($options, list-style-position);
+  letter-spacing: map-get($options, letter-spacing);
+}
+
+@mixin generateStrong($family, $font-weight: bold) {
+  font-family: $family, Arial, Helvetica, sans-serif;
+  font-weight: $font-weight;
+}

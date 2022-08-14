@@ -1,0 +1,250 @@
+@import './mixins/mixins.scss';
+
+$base-spacer: 0.25rem; // 4px on 16px base
+$spacing-xxs: ($base-spacer * 1);
+$spacing-xs: ($base-spacer * 2); // 8px
+$spacing-s: ($base-spacer * 4); // 16px
+$spacing-m: ($base-spacer * 6); // 24px
+$spacing-l: ($base-spacer * 8); // 32px
+$spacing-xl: ($base-spacer * 12); // 48px
+$spacing-xxl: ($base-spacer * 16); // 64px
+
+
+// Element space
+// -----------
+// Creates padding and margin attributes to be used on any element
+
+$padding: var(--padding, $spacing-s);
+$margin: var(--margin, $spacing-s);
+$directions: 'top', 'right', 'bottom', 'left';
+$spacing-size: (
+  '0': 0,
+  '4': $spacing-xxs,
+  '8': $spacing-xs,
+  '16': $spacing-s,
+  '24': $spacing-m,
+  '32': $spacing-l,
+  '48': $spacing-xl,
+  '64': $spacing-xxl,
+);
+
+//padding
+
+.no-padding,
+[no-padding] {
+  --padding-start: 0;
+  --padding-end: 0;
+  --padding-top: 0;
+  --padding-bottom: 0;
+
+  @include padding(0);
+}
+
+.padding,
+[padding] {
+  --padding-start: #{$padding};
+  --padding-end: #{$padding};
+  --padding-top: #{$padding};
+  --padding-bottom: #{$padding};
+
+  @include padding(#{$padding});
+}
+
+
+@each $size in map-keys($spacing-size) {
+  .padding-#{$size},
+  [padding-#{$size}] {
+    padding: #{map.get($spacing-size, $size)}
+  }
+
+  @each $direction in $directions {
+    .padding-#{$direction}-#{size},
+  [padding-#{$direction}-#{$size}] {
+    padding-#{$direction}: #{map.get($spacing-size, $size)}
+  }
+  }
+}
+
+.padding-top,
+[padding-top] {
+  --padding-top: #{$padding};
+
+  @include padding($padding, null, null, null);
+}
+
+.no-padding-top,
+[no-padding-top] {
+  --padding-top: 0;
+
+  @include padding(0 !important, null, null, null);
+}
+
+.padding-start,
+[padding-start] {
+  --padding-start: #{$padding};
+
+  @include padding-horizontal($padding, null);
+}
+
+.no-padding-start,
+[no-padding-start] {
+  --padding-start: 0;
+
+  @include padding-horizontal(0, null);
+}
+
+.padding-end,
+[padding-end] {
+  --padding-end: #{$padding};
+
+  @include padding-horizontal(null, $padding);
+}
+
+.no-padding-end,
+[no-padding-end] {
+  --padding-end: 0;
+
+  @include padding-horizontal(null, 0 !important);
+}
+
+.padding-bottom
+[padding-bottom] {
+  --padding-bottom: #{$padding};
+
+  @include padding(null, null, $padding, null);
+}
+
+.no-padding-bottom,
+[no-padding-bottom] {
+  --padding-bottom: 0;
+
+  @include padding(null, null, 0 !important, null);
+}
+
+
+.padding-vertical,
+[padding-vertical] {
+  --padding-top: #{$padding};
+  --padding-bottom: #{$padding};
+
+  @include padding($padding, null, $padding, null);
+}
+
+.padding-horizontal,
+[padding-horizontal] {
+  --padding-start: #{$padding};
+  --padding-end: #{$padding};
+
+  @include padding-horizontal($padding);
+}
+
+// Margin
+//------------------------------------
+
+.no-margin,
+[no-margin] {
+  --margin-start: 0;
+  --margin-end: 0;
+  --margin-top: 0;
+  --margin-bottom: 0;
+
+  @include margin(0 !important);
+}
+
+.margin,
+[margin] {
+  --margin-start: #{$margin};
+  --margin-end: #{$margin};
+  --margin-top: #{$margin};
+  --margin-bottom: #{$margin};
+
+  @include margin(#{$margin});
+}
+
+@each $size in map-keys($spacing-size) {
+  .margin-#{$size},
+  [margin-#{$size}] {
+    margin: #{map.get($spacing-size, $size)}
+  }
+
+  @each $direction in $directions {
+    .margin-#{$direction}-#{size},
+  [margin-#{$direction}-#{$size}] {
+    margin-#{$direction}: #{map.get($spacing-size, $size)}
+  }
+  }
+}
+
+.margin-top,
+[margin-top] {
+  --margin-top: #{$margin};
+
+  @include margin($margin, null, null, null);
+}
+
+.no-margin-top,
+[no-margin-top] {
+  --margin-top: 0;
+
+  @include margin(0 !important, null, null, null);
+}
+
+.margin-start,
+[margin-start] {
+  --margin-start: #{$padding};
+
+  @include margin-horizontal($margin, null);
+}
+
+.no-margin-start,
+[no-margin-start] {
+  --margin-start: 0;
+
+  @include margin-horizontal(0, null);
+}
+
+.margin-end,
+[margin-end] {
+  --margin-end: #{$margin};
+
+  @include margin-horizontal(null, $margin);
+}
+
+.no-margin-end,
+[no-margin-end] {
+  --margin-end: 0;
+
+  @include margin-horizontal(null, 0 !important);
+}
+
+.margin-vertical,
+[margin-vertical] {
+  --margin-top: #{$margin};
+  --margin-bottom: #{$margin};
+
+  @include margin($margin, null, $margin, null);
+}
+
+.margin-horizontal,
+[margin-horizontal] {
+  --margin-start: #{$margin};
+  --margin-end: #{$margin};
+
+  @include margin-horizontal($margin);
+}
+
+
+.margin-bottom
+[margin-bottom] {
+  --margin-bottom: #{$margin};
+
+  @include margin(null, null, $margin, null);
+}
+
+.no-margin-bottom,
+[no-margin-bottom] {
+  --margin-bottom: 0;
+
+  @include margin(null, null, 0 !important, null);
+}
+
